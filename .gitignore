@@ -1,0 +1,11 @@
+!.gitkeep
+**/.vs/**
+**/bin/**
+**/obj/**
+minecraft-text-mode/minecraft-text-mode.csproj
+minecraft-text-mode/minecraft-text-mode.csproj.user
+minecraft-text-mode/minecraft-text-mode.sln
+minecraft-text-mode/web.config
+minecraft-text-mode/web.Debug.config
+minecraft-text-mode/web.Release.config
+minecraft-text-mode/assets/list/*
