@@ -34,12 +34,32 @@
         return this.screenList[name] 
     }
 
-    lockScreen(name: string) {
-        this.lockList[name] = true;    
+    isLock(name: string) {
+        return this.lockList[name];
     }
 
-    unlockScreen(name: string) {
+    lockScreen(name: string): boolean {
+        var s = this.getScreen(name);
+        if (!s) {
+            return false;
+        }
+
+        this.lockList[name] = true;
+        s.onLock();
+
+        return true;  
+    }
+
+    unlockScreen(name: string): boolean {
+        var s = this.getScreen(name);
+        if (!s) {
+            return false;
+        }
+
         this.lockList[name] = false;
+        s.onUnlock();
+
+        return true;
     }
 
     show(name: string) {

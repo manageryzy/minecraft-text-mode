@@ -1,11 +1,27 @@
 ﻿class GameScreenInfoBar extends GameScreen{
     container: JQuery;
     info: JQuery;
+    isShow: boolean;
 
     init() {
         this.container = $('#screen-info');
         this.info = $('#screen-info-scroll');
         this.screenID = 'InfoBar';
+        this.isShow = true;
+
+        $('#screen-info-tag').click(function () {
+            if (game.Screen.isLock('InfoBar')) {
+                return;
+            }
+
+            var s: any = game.Screen.getScreen('InfoBar');
+            if (s.isShow) {
+                s.hide();
+            } else {
+                s.show();
+            }
+            s.isShow = !s.isShow;
+        });
         return this.screenID;
     }
 
@@ -18,8 +34,8 @@
     }
 
     addInfo(info: string) {
-        this.info.html(this.info.html() + '<div>' + info + '</div>');
-        if (this.info.children().length > 99) {
+        this.info.html(this.info.html() + '<div class="game-info">' + info + '</div>');
+        if (this.info.children().length > 50) {
             this.info.children()[0].remove();
         }
 
@@ -31,5 +47,13 @@
                 top: (containerHeight - infoHeight - 40) + 'px'
             }, 'fast', 'swing');
         }
+    }
+
+    onLock() {
+        $('#screen-info-tag').css('cursor', 'not-allowed');
+    }
+
+    onUnlock() {
+        $('#screen-info-tag').css('cursor', 'pointer');
     }
 }

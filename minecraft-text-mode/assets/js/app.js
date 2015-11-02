@@ -183,6 +183,10 @@ var GameScreen = (function () {
     };
     GameScreen.prototype.hide = function () {
     };
+    GameScreen.prototype.onLock = function () {
+    };
+    GameScreen.prototype.onUnlock = function () {
+    };
     return GameScreen;
 })();
 var __extends = (this && this.__extends) || function (d, b) {
@@ -199,6 +203,20 @@ var GameScreenInfoBar = (function (_super) {
         this.container = $('#screen-info');
         this.info = $('#screen-info-scroll');
         this.screenID = 'InfoBar';
+        this.isShow = true;
+        $('#screen-info-tag').click(function () {
+            if (game.Screen.isLock('InfoBar')) {
+                return;
+            }
+            var s = game.Screen.getScreen('InfoBar');
+            if (s.isShow) {
+                s.hide();
+            }
+            else {
+                s.show();
+            }
+            s.isShow = !s.isShow;
+        });
         return this.screenID;
     };
     GameScreenInfoBar.prototype.show = function () {
@@ -208,8 +226,8 @@ var GameScreenInfoBar = (function (_super) {
         this.container.animate({ left: '-300px' }, 'fast', 'swing');
     };
     GameScreenInfoBar.prototype.addInfo = function (info) {
-        this.info.html(this.info.html() + '<div>' + info + '</div>');
-        if (this.info.children().length > 99) {
+        this.info.html(this.info.html() + '<div class="game-info">' + info + '</div>');
+        if (this.info.children().length > 50) {
             this.info.children()[0].remove();
         }
         var infoHeight = this.info.height();
@@ -219,6 +237,12 @@ var GameScreenInfoBar = (function (_super) {
                 top: (containerHeight - infoHeight - 40) + 'px'
             }, 'fast', 'swing');
         }
+    };
+    GameScreenInfoBar.prototype.onLock = function () {
+        $('#screen-info-tag').css('cursor', 'not-allowed');
+    };
+    GameScreenInfoBar.prototype.onUnlock = function () {
+        $('#screen-info-tag').css('cursor', 'pointer');
     };
     return GameScreenInfoBar;
 })(GameScreen);
@@ -283,11 +307,26 @@ var ScreenControler = (function () {
     ScreenControler.prototype.getScreen = function (name) {
         return this.screenList[name];
     };
+    ScreenControler.prototype.isLock = function (name) {
+        return this.lockList[name];
+    };
     ScreenControler.prototype.lockScreen = function (name) {
+        var s = this.getScreen(name);
+        if (!s) {
+            return false;
+        }
         this.lockList[name] = true;
+        s.onLock();
+        return true;
     };
     ScreenControler.prototype.unlockScreen = function (name) {
+        var s = this.getScreen(name);
+        if (!s) {
+            return false;
+        }
         this.lockList[name] = false;
+        s.onUnlock();
+        return true;
     };
     ScreenControler.prototype.show = function (name) {
         if (!this.lockList[name]) {

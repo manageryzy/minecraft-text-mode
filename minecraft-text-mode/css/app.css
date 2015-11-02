@@ -27,6 +27,7 @@ html,body{
     width:100%;
     overflow:hidden;
     user-select:none;
+    cursor:default;
 }
 
 .game-screen{
@@ -40,6 +41,11 @@ html,body{
     text-align:center;
     width:100%;
     height:100%;
+}
+
+/**/
+.game-info{
+    width:280px;
 }
 
 /***********************************************************************************
@@ -104,7 +110,7 @@ html,body{
     z-index:10;
     background:linear-gradient(90deg,rgba(255,255,255,0.4),rgba(200,200,200,0.8));
     border-right:2px solid rgb(200,200,200);
-    overflow:hidden;
+    overflow:visible;
 }
 
 
@@ -116,4 +122,17 @@ html,body{
     top:0;
     bottom:0;
     overflow:visible;
+}
+
+#screen-info-tag{
+    position:absolute;
+    top:100px;
+    right:-46px;
+    border:2px solid rgb(200,200,200);
+    background: rgba(200,200,200,0.8);
+    border-bottom-right-radius:8px;
+    border-top-right-radius:8px;
+    height:42px;
+    width:42px;
+    cursor:not-allowed;
 }

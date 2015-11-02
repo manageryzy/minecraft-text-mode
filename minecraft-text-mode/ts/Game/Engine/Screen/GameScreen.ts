@@ -11,4 +11,10 @@
 
     hide() {
     }
+
+    onLock() {
+    }
+
+    onUnlock() {
+    }
 }
