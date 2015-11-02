@@ -23,10 +23,12 @@ var scanMusic = function(){
 	var html = '';
 	
 	for(i=0;i<workList.length;i++){
-		var id=workList[i].replace('/','-');
-		js+='Game.Music.regMusic("#'+id+'")\n';
-		html+='<audio src="./assets/'+workList[i]+'" id="'+id+'"></audio>\n';
+		var id=workList[i].replace('/','-').replace('.','-');
+		js+='game.Music.regMusic("#'+id+'")\n';
+		html+='<audio src="./assets/'+workList[i]+'" id="'+id+'"  preload="auto"></audio>\n';
 	}
+	
+	js+='game.Music.onAllReg()\n';
 	
 	fs.writeFile('./gen/music.js',js);
 	fs.writeFile('./gen/music.html',html);

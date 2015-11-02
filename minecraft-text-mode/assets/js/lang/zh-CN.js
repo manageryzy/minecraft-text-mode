@@ -4,7 +4,13 @@
 
 
 var sentences = {
+    //语言引擎
     '{{Language Engine Inited}}': '语言引擎初始化完成',
+
+    //资源加载
+    '{{Resource has been loaded successfully}}':'资源已经成功加载',
+
+    //资源加载随机语句
     '{{language engine init failed!}}': '语言引擎初始化失败',
     '{{Adding fuel to the engine}}':'向引擎注入燃料',
     '{{Preparing to time leap}}':'准备时空跃迁',
@@ -18,7 +24,13 @@ var sentences = {
     '{{Preparing to dementional hitting}}':'准备降维打击',
     '{{Rendering Items}}':'渲染物品',
     '{{Rendering Blocks}}':'渲染方块',
-    '{{Rendering Enities}}':'渲染实体',
+    '{{Rendering Enities}}': '渲染实体',
+
+    //声音引擎
+    '{{Music load Error,please refresh page to try again!}}': '音乐加载错误，请刷新页面重试',
+    '{{Sound load Error,please refresh page to try again!}}': '音效加载错误，请刷新页面重试',
+    '{{Music Start}}': '音乐开始',
+    '{{Music Stop}}': '音乐停止',
 };
 
 var items = {

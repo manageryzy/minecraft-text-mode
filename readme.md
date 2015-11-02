@@ -10,8 +10,11 @@ This project is a fan's game.
 
 * Multi language -- √
 * Screen manager -- √
-* Res loader -- to do
+* Res loader -- √
 * Info bar -- √
+* Sound system -- √
+* Music system -- √
+* volume -- todo
 
 ## Licence ##
 

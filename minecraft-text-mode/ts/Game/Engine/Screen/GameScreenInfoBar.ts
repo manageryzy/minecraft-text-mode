@@ -20,17 +20,19 @@
             } else {
                 s.show();
             }
-            s.isShow = !s.isShow;
+
         });
         return this.screenID;
     }
 
     show() {
-        this.container.animate({left:'0'},'fast','swing');
+        this.container.animate({ left: '0' }, 'fast', 'swing');
+        this.isShow = true;
     }
 
     hide() {
         this.container.animate({ left: '-300px' }, 'fast', 'swing');
+        this.isShow = false;
     }
 
     addInfo(info: string) {

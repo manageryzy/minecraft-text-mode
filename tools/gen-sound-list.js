@@ -27,10 +27,12 @@ var js = '';
 var html = '';
 
 for(var i=0;i<workList.length;i++){
-	var id=workList[i].replace(/\//ig,'-').replace(/ /ig,'-');
-	js+='Game.Sound.regSound("#'+id+'")\n';
-	html+='<audio src="./assets/'+workList[i]+'" id="'+id+'"></audio>\n';
+	var id=workList[i].replace(/\//ig,'-').replace(/ /ig,'-').replace('.','-');
+	js+='game.Sound.regSound("#'+id+'")\n';
+	html+='<audio src="./assets/'+workList[i]+'" id="'+id+'" preload="auto" ></audio>\n';
 }
+
+js+='game.Sound.onAllReg()\n';
 
 fs.writeFile('./gen/sound.js',js);
 fs.writeFile('./gen/sound.html',html);

@@ -93,18 +93,115 @@ var Logger = (function () {
         }
     };
     Logger.prototype.info = function (msg) {
-        //TODO: 
         var info = game.Lang.trans(msg);
         var t = game.Screen.getScreen('InfoBar');
         t.addInfo(info);
-        console.log(info);
+        //console.log(info);
+    };
+    Logger.prototype.clear = function () {
+        $('#screen-info-scroll').html('');
     };
     return Logger;
+})();
+var MusicEngine = (function () {
+    function MusicEngine() {
+        this.isAllRegistered = false;
+        this.loadingCount = 0;
+        this.musicList = new Array();
+        this.idList = new Array();
+        this.isPlaying = false;
+        this.current = null;
+    }
+    MusicEngine.prototype.init = function () {
+        game.Loader.loadRes('./assets/list/music.html', function (res) {
+            $('body').append(res);
+            game.Loader.loadRes('./assets/list/music.js', function (res) {
+                try {
+                    eval(res);
+                }
+                catch (ex) {
+                    console.error(ex);
+                    game.Music.onerror();
+                }
+            }, function () {
+                game.Music.onerror();
+            });
+        }, function () {
+            game.Music.onerror();
+        });
+    };
+    MusicEngine.prototype.regMusic = function (id) {
+        if ($(id).length != 1) {
+            game.Log.log('Error loading music:' + id);
+            return;
+        }
+        var t = $(id)[0];
+        var e = t;
+        this.musicList[id] = e;
+        this.idList.push(id);
+        if (e.readyState <= 3) {
+            this.loadingCount++;
+            e.oncanplaythrough = function () {
+                game.Music.loadingCount--;
+                if (game.Music.loadingCount == 0 && game.Music.isAllRegistered) {
+                    game.Music.onAllLoadFinish();
+                }
+            };
+        }
+        e.onended = function () {
+            game.Music.randomPlay();
+        };
+    };
+    MusicEngine.prototype.onerror = function () {
+        game.Loader.initError = true;
+        game.Log.info('{{Music load Error,please refresh page to try again!}}');
+        console.error();
+    };
+    MusicEngine.prototype.randomPlay = function () {
+        if (!this.isPlaying) {
+            return;
+        }
+        var id = this.idList[Math.floor(Math.random() * 1000 % this.idList.length)];
+        var e = this.musicList[id];
+        e.play();
+        game.Log.log('Playing music : ' + id);
+        this.current = e;
+    };
+    MusicEngine.prototype.play = function () {
+        if (this.isPlaying) {
+            return;
+        }
+        this.isPlaying = true;
+        this.randomPlay();
+        game.Log.info('{{Music Start}}');
+    };
+    MusicEngine.prototype.stop = function () {
+        if (!this.isPlaying) {
+            return;
+        }
+        this.isPlaying = false;
+        this.current.pause();
+        game.Log.info('{{Music Stop}}');
+    };
+    MusicEngine.prototype.onAllReg = function () {
+        this.isAllRegistered = true;
+        if (this.loadingCount == 0) {
+            setTimeout(game.Music.onAllLoadFinish, 1000);
+        }
+    };
+    MusicEngine.prototype.onAllLoadFinish = function () {
+        game.Loader.onMusicLoadFinish();
+        game.Music.play();
+    };
+    return MusicEngine;
 })();
 var ResLoader = (function () {
     function ResLoader() {
         this.resList = new Array();
         this.waitList = new Array();
+        this.initError = false;
+        this.isSoundLoad = false;
+        this.isMusicLoad = false;
         this.waitText = [
             '{{Adding fuel to the engine}}',
             '{{Preparing to time leap}}',
@@ -143,7 +240,8 @@ var ResLoader = (function () {
             catch (ex) {
                 console.error(ex);
             }
-        }).fail(function () {
+        }, function () { }, 'text').fail(function (e) {
+            console.error(e);
             console.error('failed to get:' + url);
             game.Loader.waitList[url]();
             try {
@@ -156,6 +254,9 @@ var ResLoader = (function () {
         });
     };
     ResLoader.prototype.checkLoadingFinish = function () {
+        if (game.Loader.initError) {
+            return;
+        }
         var timeout = Math.floor(Math.random() * 10000);
         game.Log.info(game.Loader.waitText[timeout % game.Loader.waitText.length]);
         if (!game.Loader.isLoadingFinish()) {
@@ -164,11 +265,18 @@ var ResLoader = (function () {
         else {
             game.Screen.unlockScreen('InfoBar');
             game.Screen.changeScreen('Welcome');
+            game.Log.clear();
+            game.Log.info('{{Resource has been loaded successfully}}');
         }
     };
     ResLoader.prototype.isLoadingFinish = function () {
-        //TODO : 
-        return false;
+        return this.isMusicLoad && this.isSoundLoad;
+    };
+    ResLoader.prototype.onSoundLoadFinish = function () {
+        this.isSoundLoad = true;
+    };
+    ResLoader.prototype.onMusicLoadFinish = function () {
+        this.isMusicLoad = true;
     };
     return ResLoader;
 })();
@@ -215,15 +323,16 @@ var GameScreenInfoBar = (function (_super) {
             else {
                 s.show();
             }
-            s.isShow = !s.isShow;
         });
         return this.screenID;
     };
     GameScreenInfoBar.prototype.show = function () {
         this.container.animate({ left: '0' }, 'fast', 'swing');
+        this.isShow = true;
     };
     GameScreenInfoBar.prototype.hide = function () {
         this.container.animate({ left: '-300px' }, 'fast', 'swing');
+        this.isShow = false;
     };
     GameScreenInfoBar.prototype.addInfo = function (info) {
         this.info.html(this.info.html() + '<div class="game-info">' + info + '</div>');
@@ -360,6 +469,65 @@ var ScreenControler = (function () {
     };
     return ScreenControler;
 })();
+var SoundEngine = (function () {
+    function SoundEngine() {
+        this.isAllRegistered = false;
+        this.soundList = new Array();
+        this.idList = new Array();
+        this.loadingCount = 0;
+    }
+    SoundEngine.prototype.init = function () {
+        game.Loader.loadRes('./assets/list/sound.html', function (res) {
+            $('body').append(res);
+            game.Loader.loadRes('./assets/list/sound.js', function (res) {
+                try {
+                    eval(res);
+                }
+                catch (ex) {
+                    console.error(ex);
+                    game.Sound.onerror();
+                }
+            }, function () {
+                game.Sound.onerror();
+            });
+        }, function () {
+            game.Sound.onerror();
+        });
+    };
+    SoundEngine.prototype.regSound = function (id) {
+        if ($(id).length != 1) {
+            game.Log.log('Error loading sound:' + id);
+            return;
+        }
+        var e = $(id)[0];
+        this.soundList[id] = e;
+        e.oncanplaythrough = function () {
+        };
+    };
+    SoundEngine.prototype.onAllReg = function () {
+        this.isAllRegistered = true;
+        if (this.loadingCount == 0) {
+            setTimeout(game.Sound.onAllLoadFinish, 1000);
+        }
+    };
+    SoundEngine.prototype.onAllLoadFinish = function () {
+        game.Loader.onSoundLoadFinish();
+    };
+    SoundEngine.prototype.onerror = function () {
+        game.Loader.initError = true;
+        game.Log.info('{{Sound load Error,please refresh page to try again!}}');
+        console.error();
+    };
+    SoundEngine.prototype.play = function (id) {
+        var e = this.soundList['#' + id];
+        if (e == null) {
+            return false;
+        }
+        e.play();
+        return true;
+    };
+    return SoundEngine;
+})();
 var Game = (function () {
     function Game() {
         this.Log = new Logger();
@@ -367,11 +535,15 @@ var Game = (function () {
         this.Loader = new ResLoader();
         this.Lang = new Language();
         this.Screen = new ScreenControler();
+        this.Music = new MusicEngine();
+        this.Sound = new SoundEngine();
     }
     Game.prototype.init = function () {
         this.Lang.init();
         this.Screen.init();
         this.Loader.init();
+        this.Music.init();
+        this.Sound.init();
     };
     return Game;
 })();

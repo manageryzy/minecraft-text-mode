@@ -6,10 +6,18 @@ class ResLoader {
     waitList: Array<Function>;
 
     waitText: Array<String>;
+    initError: boolean;
+
+    isSoundLoad: boolean;
+    isMusicLoad: boolean;
 
     constructor() {
         this.resList = new Array<Function>();
         this.waitList = new Array<Function>();
+        this.initError = false;
+
+        this.isSoundLoad = false;
+        this.isMusicLoad = false;
 
         this.waitText = [
             '{{Adding fuel to the engine}}',
@@ -53,7 +61,8 @@ class ResLoader {
             } catch (ex) {
                 console.error(ex);
             }
-        }).fail(function () {
+        }, () => { },'text').fail(function (e) {
+            console.error(e);
             console.error('failed to get:' + url);
             game.Loader.waitList[url]();
             try {
@@ -66,6 +75,10 @@ class ResLoader {
     }
 
     checkLoadingFinish() {
+        if (game.Loader.initError) {
+            return;
+        }
+
         var timeout = Math.floor(Math.random() * 10000);
 
         game.Log.info(game.Loader.waitText[timeout % game.Loader.waitText.length]);
@@ -75,11 +88,20 @@ class ResLoader {
         } else {
             game.Screen.unlockScreen('InfoBar');
             game.Screen.changeScreen('Welcome');
+            game.Log.clear();
+            game.Log.info('{{Resource has been loaded successfully}}');
         }
     }
 
     isLoadingFinish(): boolean {
-        //TODO : 
-        return false;
+        return this.isMusicLoad && this.isSoundLoad;
+    }
+
+    onSoundLoadFinish() {
+        this.isSoundLoad = true;
+    }
+
+    onMusicLoadFinish() {
+        this.isMusicLoad = true;
     }
 }
