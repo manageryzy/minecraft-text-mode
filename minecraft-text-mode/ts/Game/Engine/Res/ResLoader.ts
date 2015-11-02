@@ -1,12 +1,36 @@
 ﻿declare var JQueryXHR;
 
-class ResLoader {
+class ResLoader {    
+
     resList: Array<Function>;
     waitList: Array<Function>;
+
+    waitText: Array<String>;
 
     constructor() {
         this.resList = new Array<Function>();
         this.waitList = new Array<Function>();
+
+        this.waitText = [
+            '{{Adding fuel to the engine}}',
+            '{{Preparing to time leap}}',
+            '{{Calculating targe position}}',
+            '{{Engine overheating}}',
+            '{{Preparing brain-computer interface}}',
+            '{{Connecting to the Matrix}}',
+            '{{Found the black monolith}}',
+            '{{Found the answer to life the universe and everything}}',
+            '42',
+            '{{Secure,Contain,Protect}}',
+            '{{Preparing to dementional hitting}}',
+            '{{Rendering Items}}',
+            '{{Rendering Blocks}}',
+            '{{Rendering Enities}}',
+        ];
+    }
+
+    init() {
+        setTimeout(this.checkLoadingFinish, 2000);
     }
 
     loadRes(url: string, succeed: Function, error?: Function) {
@@ -39,5 +63,23 @@ class ResLoader {
                 console.error(ex);
             }
         });
+    }
+
+    checkLoadingFinish() {
+        var timeout = Math.floor(Math.random() * 10000);
+
+        game.Log.info(game.Loader.waitText[timeout % game.Loader.waitText.length]);
+
+        if (!game.Loader.isLoadingFinish()) {
+            setTimeout(game.Loader.checkLoadingFinish, timeout);
+        } else {
+            game.Screen.unlockScreen('InfoBar');
+            game.Screen.changeScreen('Welcome');
+        }
+    }
+
+    isLoadingFinish(): boolean {
+        //TODO : 
+        return false;
     }
 }

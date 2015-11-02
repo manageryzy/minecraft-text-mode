@@ -5,7 +5,20 @@
 
 var sentences = {
     '{{Language Engine Inited}}': '语言引擎初始化完成',
-    '{{language engine init failed!}}':'语言引擎初始化失败'
+    '{{language engine init failed!}}': '语言引擎初始化失败',
+    '{{Adding fuel to the engine}}':'向引擎注入燃料',
+    '{{Preparing to time leap}}':'准备时空跃迁',
+    '{{Calculating targe position}}':'计算目的坐标',
+    '{{Engine overheating}}':'引擎过热',
+    '{{Preparing brain-computer interface}}':'准备脑机接口',
+    '{{Connecting to the Matrix}}':'正在连接到矩阵',
+    '{{Found the black monolith}}':'发现黑色石碑',
+    '{{Found the answer to life the universe and everything}}':'计算完成生命宇宙一切的答案',
+    '{{Secure,Contain,Protect}}':'控制·收容·保护',
+    '{{Preparing to dementional hitting}}':'准备降维打击',
+    '{{Rendering Items}}':'渲染物品',
+    '{{Rendering Blocks}}':'渲染方块',
+    '{{Rendering Enities}}':'渲染实体',
 };
 
 var items = {

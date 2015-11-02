@@ -17,5 +17,6 @@
     init() {
         this.Lang.init();
         this.Screen.init();
+        this.Loader.init();
     }
 }

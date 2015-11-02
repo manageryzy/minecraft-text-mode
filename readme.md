@@ -11,7 +11,7 @@ This project is a fan's game.
 * Multi language -- √
 * Screen manager -- √
 * Res loader -- to do
-* Info bar -- to do
+* Info bar -- √
 
 ## Licence ##
 

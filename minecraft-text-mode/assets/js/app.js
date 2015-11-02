@@ -95,6 +95,8 @@ var Logger = (function () {
     Logger.prototype.info = function (msg) {
         //TODO: 
         var info = game.Lang.trans(msg);
+        var t = game.Screen.getScreen('InfoBar');
+        t.addInfo(info);
         console.log(info);
     };
     return Logger;
@@ -103,7 +105,26 @@ var ResLoader = (function () {
     function ResLoader() {
         this.resList = new Array();
         this.waitList = new Array();
+        this.waitText = [
+            '{{Adding fuel to the engine}}',
+            '{{Preparing to time leap}}',
+            '{{Calculating targe position}}',
+            '{{Engine overheating}}',
+            '{{Preparing brain-computer interface}}',
+            '{{Connecting to the Matrix}}',
+            '{{Found the black monolith}}',
+            '{{Found the answer to life the universe and everything}}',
+            '42',
+            '{{Secure,Contain,Protect}}',
+            '{{Preparing to dementional hitting}}',
+            '{{Rendering Items}}',
+            '{{Rendering Blocks}}',
+            '{{Rendering Enities}}',
+        ];
     }
+    ResLoader.prototype.init = function () {
+        setTimeout(this.checkLoadingFinish, 2000);
+    };
     ResLoader.prototype.loadRes = function (url, succeed, error) {
         if (!error) {
             error = null;
@@ -134,6 +155,21 @@ var ResLoader = (function () {
             }
         });
     };
+    ResLoader.prototype.checkLoadingFinish = function () {
+        var timeout = Math.floor(Math.random() * 10000);
+        game.Log.info(game.Loader.waitText[timeout % game.Loader.waitText.length]);
+        if (!game.Loader.isLoadingFinish()) {
+            setTimeout(game.Loader.checkLoadingFinish, timeout);
+        }
+        else {
+            game.Screen.unlockScreen('InfoBar');
+            game.Screen.changeScreen('Welcome');
+        }
+    };
+    ResLoader.prototype.isLoadingFinish = function () {
+        //TODO : 
+        return false;
+    };
     return ResLoader;
 })();
 var GameScreen = (function () {
@@ -161,6 +197,7 @@ var GameScreenInfoBar = (function (_super) {
     }
     GameScreenInfoBar.prototype.init = function () {
         this.container = $('#screen-info');
+        this.info = $('#screen-info-scroll');
         this.screenID = 'InfoBar';
         return this.screenID;
     };
@@ -169,6 +206,19 @@ var GameScreenInfoBar = (function (_super) {
     };
     GameScreenInfoBar.prototype.hide = function () {
         this.container.animate({ left: '-300px' }, 'fast', 'swing');
+    };
+    GameScreenInfoBar.prototype.addInfo = function (info) {
+        this.info.html(this.info.html() + '<div>' + info + '</div>');
+        if (this.info.children().length > 99) {
+            this.info.children()[0].remove();
+        }
+        var infoHeight = this.info.height();
+        var containerHeight = this.container.height();
+        if (infoHeight > containerHeight) {
+            this.info.animate({
+                top: (containerHeight - infoHeight - 40) + 'px'
+            }, 'fast', 'swing');
+        }
     };
     return GameScreenInfoBar;
 })(GameScreen);
@@ -282,6 +332,7 @@ var Game = (function () {
     Game.prototype.init = function () {
         this.Lang.init();
         this.Screen.init();
+        this.Loader.init();
     };
     return Game;
 })();

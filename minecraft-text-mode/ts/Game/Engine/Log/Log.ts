@@ -14,6 +14,8 @@
     info(msg) {
         //TODO: 
         var info = game.Lang.trans(msg);
+        var t: any = game.Screen.getScreen('InfoBar');
+        t.addInfo(info);
 
         console.log(info);
     }
