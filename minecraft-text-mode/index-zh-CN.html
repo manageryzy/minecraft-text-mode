@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>Minecraft Text Mode</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="./assets/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./assets/lib/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet" />
+    <link href="./css/index.css" rel="stylesheet" />
+    <script src="./assets/lib/jquery-2.1.4.min.js"></script>
+    <script src="./assets/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./assets/lib/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script>
+        localStorage.setItem('lang', 'zh-CN');
+    </script>
+</head>
+<body>
+    <noscript>对不起，没有JavaScript。</noscript>
+
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Minecraft Text Mode</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="https://github.com/manageryzy/minecraft-text-mode">Github</a></li>
+                    <li><a href="http://261day.com">作者</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分享 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><div class="fb-share-button" data-href="https://github.com/manageryzy/minecraft-text-mode" data-layout="button_count"></div></li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a class="twitter-share-button"
+                                   href="https://twitter.com/intent/tweet?url=https://github.com/manageryzy/minecraft-text-mode"
+                                   data-counturl="https://github.com/manageryzy/minecraft-text-mode">
+                                    Tweet
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a href="https://plus.google.com/share?url={https://github.com/manageryzy/minecraft-text-mode}" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+                                    <img src="https://www.gstatic.com/images/icons/gplus-32.png" alt="Share on Google+" />
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">语言选择 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">中文（简体）</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="index-en-US.html">English</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+        <!-- default language alert -->
+        <div class="alert alert-warning" role="alert" id="default-language" style="display:none">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>警告!</strong> 默认语言不被支持。使用简体中文替代。
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">设置</div>
+            <div class="panel-body">
+                <div class="alert alert-info" role="alert">你需要完成这些设置才能开始游戏。如果需要设置语言，请选择右上角的语言选择。</div>
+
+
+                <div class="row">
+                    <!-- Name choose and skin preview -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <iframe src="./index-skin.html" height="300" width="250" scrolling="no" style="margin:auto" id="preview"></iframe>
+                            <div class="caption">
+                                <h3>玩家户名</h3>
+                                <p>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">@</span>
+                                        <input type="text" class="form-control" placeholder="名称。" aria-describedby="basic-addon1" id="name">
+                                    </div>
+                                </p>
+                                <p>* 注意 : 你的皮肤会根据你的名称从Mojang获得。</p>
+                                <p>* 注意 : Alex 模型存在渲染问题.请使用Steve.</p>
+                                <p><a href="#" onclick="setSkin()" class="btn btn-primary" role="button">保存名称</a> <a href="https://minecraft.net/profile" class="btn btn-default" role="button" target="_blank">设置皮肤</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>Options</h3>
+                                <hr />
+                                <p>
+                                    <input type="checkbox" name="music" class="switch" checked data-label-text="音乐"><br />* 这会消耗超过 18 MiB 的流量.
+                                    <hr />
+                                    <input type="checkbox" name="sound" class="switch" checked data-label-text="音效"><br />* 这会消耗超过 4 MiB 的流量.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- start game -->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3>游戏</h3>
+                                <hr />
+                                <p>
+                                    <button type="button" class="btn btn-primary btn-lg" onclick="startGame()">开始游戏</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of the pannel -->
+            </div>
+        </div>
+    </div>
+
+    <!-- facebook share -->
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_CN/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <!-- twitter share -->
+    <script>
+window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
+</body>
+</html>

@@ -14,6 +14,7 @@ This project is a fan's game.
 * Info bar -- √
 * Sound system -- √
 * Music system -- √
+* index Page -- √
 * volume -- todo
 
 ## Licence ##

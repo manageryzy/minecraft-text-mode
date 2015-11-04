@@ -1,46 +1,31 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 <head>
     <meta charset="utf-8" />
     <title>Minecraft Text Mode</title>
-    <link rel="stylesheet" href="./css/app.css" type="text/css" />
-    <script src="./assets/lib/jquery-2.1.4.min.js"></script>
-    <script src="./assets/js/app.js"></script>
 </head>
-<body onselectstart="return false" oncontextmenu="return false" ondragstart="return false">
-    <!-- Welcome Screen -->
-    <!-- 游戏欢迎界面 -->
-    <div class="game-screen" id="screen-welcome">
-        <div class="game-screen-center">
-            <div id="screen-welcome-title-container">
-                <img src="./assets/img/001-hello-screen-3.png" id="screen-welcome-title-change" />
-            </div>
-        </div>
-    </div>
+<body>
+    <noscript>
+        <h1>No Javascript!</h1>
+    </noscript>
+    <script>
+        var lang = lang = navigator.language ? navigator.language : "en-US";;
+        if (localStorage.getItem('lang')) {
+            lang = localStorage.getItem('lang')
+        }
 
-    <!-- Loading Screen -->
-    <!-- 载入界面 -->
-    <div class="game-screen" id="screen-loading">
-        <div id="screen-loading-svg">
-            <img src="./assets/img/load.gif" />
-            <h4>Loading...... &nbsp;&nbsp;</h4>
-        </div>
-    </div>
-
-    <!-- Info Bar -->
-    <!-- 信息界面 -->
-    <div id="screen-info">
-        <!-- This is the container of the info text -->
-        <div id="screen-info-scroll">
-        </div>
-        <div id="screen-info-tag"></div>
-    </div>
-
-    <footer>
-        The Origin Resources belong to Mojang AB & Telltale Games.This is only a fan's game.&nbsp;&nbsp;&nbsp;&nbsp;
-        Homepage : <a href="https://github.com/manageryzy/minecraft-text-mode" target="_blank">Github</a> &nbsp;&nbsp;&nbsp;&nbsp;
-        Author : <a href="http://261day.com" target="_blank">manageryzy</a> &nbsp;&nbsp;&nbsp;&nbsp;
-    </footer>
+        switch (lang) {
+            case 'en-US':
+                location.href = 'index-en-US.html';
+                break;
+            case 'zh-CN':
+                location.href = 'index-zh-CN.html';
+                break;
+            default:
+                location.href = 'index-en-US.html#default';
+                break;
+        }
+    </script>
 </body>
 </html>

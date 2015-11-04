@@ -1,0 +1,79 @@
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP Warning:  file_get_contents(0): failed to open stream: No such file or directory in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 13
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:13
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP Notice:  Use of undefined constant id - assumed 'id' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 14
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:27:37 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP Notice:  Use of undefined constant id - assumed 'id' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:32:16 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:32:39 Asia/Shanghai] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP Notice:  Use of undefined constant id - assumed 'id' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:32:47 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:03 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 23
+[04-Nov-2015 17:33:03 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:03 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:21 Asia/Shanghai] PHP Fatal error:  Cannot use object of type stdClass as array in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:33:21 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:21 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP Notice:  Use of undefined constant id - assumed 'id' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:36 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP Notice:  Use of undefined constant id - assumed 'id' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 23
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 23
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:46 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP Notice:  Use of undefined constant name - assumed 'name' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 23
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP Catchable fatal error:  Object of class stdClass could not be converted to string in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 23
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:33:58 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:42:24 Asia/Shanghai] PHP Parse error:  syntax error, unexpected ')', expecting ',' or ';' in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 24
+[04-Nov-2015 17:43:55 Asia/Shanghai] PHP Warning:  file_get_contents(https://sessionserver.mojang.com/session/minecraft/profile/dc3ffbcb57ae49c48cd513090383651b): failed to open stream: HTTP request failed! HTTP/1.1 429 429
+ in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:43:55 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:43:55 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:43:55 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:21
+[04-Nov-2015 17:44:05 Asia/Shanghai] PHP Warning:  file_get_contents(https://sessionserver.mojang.com/session/minecraft/profile/dc3ffbcb57ae49c48cd513090383651b): failed to open stream: HTTP request failed! HTTP/1.1 429 429
+ in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:44:05 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:44:05 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:44:05 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:21
+[04-Nov-2015 17:50:27 Asia/Shanghai] PHP Notice:  Trying to get property of non-object in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:50:27 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:27 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:28 Asia/Shanghai] PHP Warning:  file_get_contents(https://sessionserver.mojang.com/session/minecraft/profile/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:50:28 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:28 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:28 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:21
+[04-Nov-2015 17:50:34 Asia/Shanghai] PHP Notice:  Trying to get property of non-object in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:50:34 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:34 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:36 Asia/Shanghai] PHP Warning:  file_get_contents(https://sessionserver.mojang.com/session/minecraft/profile/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:50:36 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:36 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:36 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:21
+[04-Nov-2015 17:50:38 Asia/Shanghai] PHP Notice:  Trying to get property of non-object in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 19
+[04-Nov-2015 17:50:38 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:38 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:39 Asia/Shanghai] PHP Warning:  file_get_contents(https://sessionserver.mojang.com/session/minecraft/profile/): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in D:\git\minecraft-text-mode\minecraft-text-mode\skin.php on line 21
+[04-Nov-2015 17:50:39 Asia/Shanghai] PHP Stack trace:
+[04-Nov-2015 17:50:39 Asia/Shanghai] PHP   1. {main}() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:0
+[04-Nov-2015 17:50:39 Asia/Shanghai] PHP   2. file_get_contents() D:\git\minecraft-text-mode\minecraft-text-mode\skin.php:21
