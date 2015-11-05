@@ -2,6 +2,8 @@
 **/.vs/**
 **/bin/**
 **/obj/**
+*.tmp
+*.log
 minecraft-text-mode/minecraft-text-mode.csproj
 minecraft-text-mode/minecraft-text-mode.csproj.user
 minecraft-text-mode/minecraft-text-mode.sln
